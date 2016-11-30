@@ -15,7 +15,7 @@
   },
   "author": "Arpinum",
   "license": "MIT",
-  "repository": "arpinum-js-engine/js-config.git",
+  "repository": "arpinum-js-engine/js-engine-config.git",
   "keywords": [
     "conviguration",
     "12 factor",
