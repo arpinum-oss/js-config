@@ -17,7 +17,7 @@
   "license": "MIT",
   "repository": "arpinum-js-engine/js-engine-config.git",
   "keywords": [
-    "conviguration",
+    "configuration",
     "12 factor",
     "env",
     "variable",
