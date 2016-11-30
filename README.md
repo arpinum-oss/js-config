@@ -1,9 +1,9 @@
-# js-engine-config [![Build Status](https://travis-ci.org/arpinum-js-engine/js-engine-config.svg?branch=master)](https://travis-ci.org/arpinum-js-engine/js-engine-config)
+# @arpinum/config [![Build Status](https://travis-ci.org/arpinum-js-engine/js-engine-config.svg?branch=master)](https://travis-ci.org/arpinum-js-engine/js-engine-config)
 
 > One man's constant is another man's variable.
 > <cite>(Alan Perlis)</cite>
 
-*js-engine-config* is a simple module to read configuration from env variables.
+*@arpinum/config* is a simple module to read configuration from env variables.
 
 It helps you implement a [12-factor configuration].
 
