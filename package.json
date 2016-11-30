@@ -15,7 +15,14 @@
   },
   "author": "Arpinum",
   "license": "MIT",
-  "repository": "arpinum/js-config.git",
+  "repository": "arpinum-js-engine/js-config.git",
+  "keywords": [
+    "conviguration",
+    "12 factor",
+    "env",
+    "variable",
+    "Arpinum"
+  ],
   "devDependencies": {
     "chai": "3.5.0",
     "eslint": "3.11.0",
