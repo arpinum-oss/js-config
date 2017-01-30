@@ -69,7 +69,7 @@ console.log(configuration);
 
 The output is:
 
-```bash
+```
 {
   database: {
     url: '...',
