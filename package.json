@@ -15,7 +15,7 @@
   },
   "author": "Arpinum",
   "license": "MIT",
-  "repository": "arpinum-js-engine/js-config.git",
+  "repository": "arpinum-oss/js-config.git",
   "keywords": [
     "configuration",
     "12 factor",
