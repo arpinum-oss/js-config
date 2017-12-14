@@ -1,6 +1,5 @@
-'use strict';
-
-const load = require('./load');
+import { DescriptionType } from './description';
+import { load } from './load';
 
 describe('load function', () => {
   let options;
@@ -12,20 +11,20 @@ describe('load function', () => {
   });
 
   it('should read configuration from a single variable description', () => {
-    let description = {
+    const description = {
       logLevel: {
         env: 'LOG_LEVEL'
       }
     };
     env.LOG_LEVEL = 'info';
 
-    let configuration = load(description, options);
+    const configuration = load(description, options);
 
-    configuration.should.deep.equal({ logLevel: 'info' });
+    expect(configuration).toEqual({ logLevel: 'info' });
   });
 
   it('should read configuration from a nested description', () => {
-    let description = {
+    const description = {
       log: {
         level: {
           env: 'LOG_LEVEL'
@@ -38,9 +37,9 @@ describe('load function', () => {
     env.LOG_LEVEL = 'info';
     env.LOG_FILE = '/tmp/log.txt';
 
-    let configuration = load(description, options);
+    const configuration = load(description, options);
 
-    configuration.should.deep.equal({
+    expect(configuration).toEqual({
       log: {
         level: 'info',
         file: '/tmp/log.txt'
@@ -49,59 +48,59 @@ describe('load function', () => {
   });
 
   it('wont set a value for a missing variable', () => {
-    let description = {
+    const description = {
       logLevel: {
         env: 'LOG_LEVEL'
       }
     };
 
-    let configuration = load(description, options);
+    const configuration = load(description, options);
 
-    configuration.should.deep.equal({});
+    expect(configuration).toEqual({});
   });
 
   it('should set a default value for a missing variable', () => {
-    let description = {
+    const description = {
       logLevel: {
         env: 'LOG_LEVEL',
         default: 'info'
       }
     };
 
-    let configuration = load(description, options);
+    const configuration = load(description, options);
 
-    configuration.should.deep.equal({ logLevel: 'info' });
+    expect(configuration).toEqual({ logLevel: 'info' });
   });
 
   it('should fail if a required variable is missing', () => {
-    let description = {
+    const description = {
       logLevel: {
         env: 'LOG_LEVEL',
         required: true
       }
     };
 
-    let loadCall = () => load(description, options);
+    const loadCall = () => load(description, options);
 
-    loadCall.should.throw(Error, 'LOG_LEVEL variable is required but missing');
+    expect(loadCall).toThrow('LOG_LEVEL variable is required but missing');
   });
 
   it('should convert variable to given type', () => {
-    let description = {
+    const description = {
       withLog: {
         env: 'WITH_LOG',
-        type: 'boolean'
+        type: 'boolean' as DescriptionType
       }
     };
     env.WITH_LOG = 'true';
 
-    let configuration = load(description, options);
+    const configuration = load(description, options);
 
-    configuration.withLog.should.be.true;
+    expect(configuration.withLog).toBeTruthy();
   });
 
   it('should convert variable using custom converter', () => {
-    let description = {
+    const description = {
       withLog: {
         env: 'WITH_LOG',
         convert: v => `${v} is converted`
@@ -109,8 +108,8 @@ describe('load function', () => {
     };
     env.WITH_LOG = 'value';
 
-    let configuration = load(description, options);
+    const configuration = load(description, options);
 
-    configuration.withLog.should.equal('value is converted');
+    expect(configuration.withLog).toEqual('value is converted');
   });
 });

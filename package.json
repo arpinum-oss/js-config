@@ -2,33 +2,39 @@
   "name": "@arpinum/config",
   "version": "1.0.0",
   "description": "Simple module to read configuration from env variables",
-  "main": "./lib/index.js",
-  "files": [
-    "lib"
-  ],
+  "main": "build/index.js",
+  "files": ["build"],
   "scripts": {
-    "eslint": "./node_modules/.bin/eslint .",
-    "mocha": "./node_modules/.bin/mocha lib",
-    "test": "npm run mocha; code=$?; npm run eslint; exit $((${code}+$?))",
-    "prettier": "prettier --write \"**/*.js\"",
+    "tslint": "tslint --fix lib/**/*.ts",
+    "jest": "jest",
+    "test": "npm run jest; code=$?; npm run tslint; exit $((${code}+$?))",
+    "testw": "jest --watch",
+    "prettier": "prettier --write \"**/*.ts\"",
+    "build": "rm -rf ./build && tsc",
     "preversion": "npm test",
     "postversion": "git push && git push --tags && npm publish"
   },
   "author": "Arpinum",
   "license": "MIT",
   "repository": "arpinum-oss/js-config.git",
-  "keywords": [
-    "configuration",
-    "12 factor",
-    "env",
-    "variable",
-    "Arpinum"
-  ],
+  "keywords": ["configuration", "12 factor", "env", "variable", "Arpinum"],
   "devDependencies": {
-    "chai": "4.1.2",
-    "eslint": "4.11.0",
-    "eslint-config-arpinum": "5.0.0",
-    "mocha": "4.0.1",
-    "prettier": "1.8.2"
+    "@types/jest": "21.1.8",
+    "@types/node": "8.0.58",
+    "jest": "21.2.1",
+    "prettier": "1.8.2",
+    "ts-jest": "21.2.4",
+    "ts-node": "4.0.1",
+    "tslint": "5.8.0",
+    "tslint-config-prettier": "1.6.0",
+    "typescript": "2.6.2"
+  },
+  "jest": {
+    "transform": {
+      ".ts": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "mapCoverage": true,
+    "testRegex": "/lib/.*\\.spec\\.ts$",
+    "moduleFileExtensions": ["js", "json", "ts"]
   }
 }
