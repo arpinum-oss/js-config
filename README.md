@@ -3,7 +3,7 @@
 > One man's constant is another man's variable.
 > <cite>(Alan Perlis)</cite>
 
-*@arpinum/config* is a simple module to read configuration from env variables.
+_@arpinum/config_ is a simple module to read configuration from env variables.
 
 It helps you implement a [12-factor configuration].
 
@@ -25,13 +25,13 @@ In your app, require the module then read the configuration:
 ```javascript
 const config = require('@arpinum/config');
 
-let configuration = config({
+const configuration = config({
   databaseUrl: {
     env: 'DATABASE_URL'
   },
   logLevel: {
-     env: 'LOG_LEVEL'
-   }
+    env: 'LOG_LEVEL'
+  }
 });
 
 console.log(configuration);
@@ -50,9 +50,8 @@ The output is:
 
 Configuration can be nested:
 
-
 ```javascript
-let configuration = config({
+const configuration = config({
   database: {
     url: {
       env: 'DATABASE_URL'
@@ -62,7 +61,6 @@ let configuration = config({
     }
   }
 });
-
 
 console.log(configuration);
 ```
@@ -83,10 +81,10 @@ The output is:
 A default value can be used if the variable is missing:
 
 ```javascript
-let configuration = config({
+const configuration = config({
   logLevel: {
-     env: 'LOG_LEVEL',
-     default: 'info'
+    env: 'LOG_LEVEL',
+    default: 'info'
   }
 });
 ```
@@ -98,10 +96,10 @@ If a property is marked as required, the module will throw an error if the corre
 Example:
 
 ```javascript
-let configuration = config({
+const configuration = config({
   logLevel: {
-     env: 'LOG_LEVEL',
-     required: true
+    env: 'LOG_LEVEL',
+    required: true
   }
 });
 ```
@@ -113,10 +111,10 @@ A property can be cast to a given type, provided representation is compatible.
 Example:
 
 ```javascript
-let configuration = config({
+const configuration = config({
   retryCount: {
-     env: 'RETRY_COUNT',
-     type: 'integer'
+    env: 'RETRY_COUNT',
+    type: 'integer'
   }
 });
 ```
@@ -140,10 +138,10 @@ A property can be converted using a custom conversion function.
 Example:
 
 ```javascript
-let configuration = config({
+const configuration = config({
   timeoutInMilliseconds: {
-     env: 'TIMEOUT_IN_SECONDS',
-     convert: v => v * 1000
+    env: 'TIMEOUT_IN_SECONDS',
+    convert: v => v * 1000
   }
 });
 ```
@@ -157,7 +155,6 @@ I thank him for his work, his module helped me a while.
 ## License
 
 [MIT](LICENSE)
-
 
 [12-factor configuration]: https://12factor.net/config
 [12factor-config]: https://github.com/chilts/12factor-config
