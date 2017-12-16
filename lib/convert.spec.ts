@@ -1,5 +1,5 @@
 import { convert } from './convert';
-import { DescriptionType } from './description';
+import { ValueType } from './schema';
 
 describe('convert function', () => {
   it('wont do anything for a string', () => {
@@ -11,7 +11,7 @@ describe('convert function', () => {
   });
 
   it('should fail if type is unknown', () => {
-    const convertCall = () => convert('hello', 'over9000' as DescriptionType);
+    const convertCall = () => convert('hello', 'over9000' as ValueType);
 
     expect(convertCall).toThrow('over9000 is an invalid type');
   });

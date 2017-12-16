@@ -1,13 +1,13 @@
 import { convert } from './convert';
-import { Description, DescriptionLeaf } from './description';
+import { Schema, Value } from './schema';
 
-export interface LoadOptions {
+export interface Options {
   env?: NodeJS.ProcessEnv;
 }
 
-export function load(description: Description, options: LoadOptions): any {
+export function load(schema: Schema, options: Options): any {
   const opts = initializeOptions();
-  return Object.keys(description).reduce(
+  return Object.keys(schema).reduce(
     (result, key) => Object.assign({}, result, loadKey(key)),
     {}
   );
@@ -17,33 +17,33 @@ export function load(description: Description, options: LoadOptions): any {
   }
 
   function loadKey(key: string): object {
-    const descriptionPart = description[key];
-    if (descriptionSeemsNested(descriptionPart)) {
-      return { [key]: load(descriptionPart as Description, options) };
+    const schemaPart = schema[key];
+    if (schemaSeemsNested(schemaPart)) {
+      return { [key]: load(schemaPart as Schema, options) };
     }
-    const descriptionLeaf = descriptionPart as DescriptionLeaf;
-    const variableName = descriptionLeaf.env;
+    const schemaValue = schemaPart as Value;
+    const variableName = schemaValue.env;
     const envValue = opts.env()[variableName];
     if (envValue !== undefined) {
-      return { [key]: callConvert(envValue, descriptionLeaf) };
+      return { [key]: callConvert(envValue, schemaValue) };
     }
-    if (descriptionLeaf.default !== undefined) {
-      return { [key]: descriptionLeaf.default };
+    if (schemaValue.default !== undefined) {
+      return { [key]: schemaValue.default };
     }
-    if (descriptionLeaf.required) {
+    if (schemaValue.required) {
       throw new Error(`${variableName} variable is required but missing`);
     }
     return {};
   }
 
-  function callConvert(envValue: string, leaf: DescriptionLeaf) {
-    if (leaf.convert) {
-      return leaf.convert(envValue);
+  function callConvert(envValue: string, schemaValue: Value) {
+    if (schemaValue.convert) {
+      return schemaValue.convert(envValue);
     }
-    return convert(envValue, leaf.type);
+    return convert(envValue, schemaValue.type);
   }
 
-  function descriptionSeemsNested(leafOrNot: Description | DescriptionLeaf) {
-    return (leafOrNot as any).env === undefined;
+  function schemaSeemsNested(valueOrNot: Schema | Value) {
+    return (valueOrNot as any).env === undefined;
   }
 }

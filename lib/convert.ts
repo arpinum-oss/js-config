@@ -1,4 +1,4 @@
-import { DescriptionType } from './description';
+import { ValueType } from './schema';
 
 const converters: any = {
   string: convertToString,
@@ -18,11 +18,11 @@ const booleans: Booleans = {
   no: false
 };
 
-export function convert(value: string, type: DescriptionType = 'string') {
+export function convert(value: string, type: ValueType = 'string') {
   return converterFor(type)(value);
 }
 
-function converterFor(type: DescriptionType) {
+function converterFor(type: ValueType) {
   const converter = converters[type];
   if (!converter) {
     throw new Error(`${type} is an invalid type`);
