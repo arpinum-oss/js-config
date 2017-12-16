@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "Simple module to read configuration from env variables",
   "main": "build/index.js",
-  "files": [
-    "build"
-  ],
+  "types": "build/index.d.ts",
+  "files": ["build"],
   "scripts": {
     "tslint": "tslint --fix lib/**/*.ts",
     "jest": "jest",
@@ -20,13 +19,7 @@
   "author": "Arpinum",
   "license": "MIT",
   "repository": "arpinum-oss/js-config.git",
-  "keywords": [
-    "configuration",
-    "12 factor",
-    "env",
-    "variable",
-    "Arpinum"
-  ],
+  "keywords": ["configuration", "12 factor", "env", "variable", "Arpinum"],
   "devDependencies": {
     "@types/jest": "21.1.8",
     "@types/node": "8.5.1",
@@ -45,10 +38,6 @@
     },
     "mapCoverage": true,
     "testRegex": "/lib/.*\\.spec\\.ts$",
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "ts"
-    ]
+    "moduleFileExtensions": ["js", "json", "ts"]
   }
 }
