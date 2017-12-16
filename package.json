@@ -4,9 +4,7 @@
   "description": "Simple module to read configuration from env variables",
   "main": "build/index.js",
   "types": "build/index.d.ts",
-  "files": [
-    "build"
-  ],
+  "files": ["build"],
   "scripts": {
     "tslint": "tslint --fix lib/**/*.ts",
     "jest": "jest",
@@ -14,20 +12,15 @@
     "prettier": "prettier --write \"**/*.ts\"",
     "compile": "tsc --noEmit",
     "test": "run-s -c compile jest tslint",
-    "build": "rm -rf ./build && tsc",
+    "prebuild": "rm -rf ./build",
+    "build": "tsc",
     "preversion": "run-s test build",
     "postversion": "git push && git push --tags && npm publish"
   },
   "author": "Arpinum",
   "license": "MIT",
   "repository": "arpinum-oss/js-config.git",
-  "keywords": [
-    "configuration",
-    "12 factor",
-    "env",
-    "variable",
-    "Arpinum"
-  ],
+  "keywords": ["configuration", "12 factor", "env", "variable", "Arpinum"],
   "devDependencies": {
     "@types/jest": "21.1.8",
     "@types/node": "8.5.1",
@@ -46,10 +39,6 @@
     },
     "mapCoverage": true,
     "testRegex": "/lib/.*\\.spec\\.ts$",
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "ts"
-    ]
+    "moduleFileExtensions": ["js", "json", "ts"]
   }
 }
