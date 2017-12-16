@@ -43,10 +43,6 @@ export function load(description: Description, options: LoadOptions): any {
     return convert(envValue, leaf.type);
   }
 
-  function convertFunctionFrom(leaf: DescriptionLeaf) {
-    return leaf.convert || convert;
-  }
-
   function descriptionSeemsNested(leafOrNot: Description | DescriptionLeaf) {
     return (leafOrNot as any).env === undefined;
   }

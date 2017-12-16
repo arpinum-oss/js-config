@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "description": "Simple module to read configuration from env variables",
   "main": "build/index.js",
-  "files": ["build"],
+  "files": [
+    "build"
+  ],
   "scripts": {
     "tslint": "tslint --fix lib/**/*.ts",
     "jest": "jest",
-    "test": "npm run jest; code=$?; npm run tslint; exit $((${code}+$?))",
     "testw": "jest --watch",
     "prettier": "prettier --write \"**/*.ts\"",
+    "compile": "tsc --noEmit",
+    "test": "run-s -c compile jest tslint",
     "build": "rm -rf ./build && tsc",
     "preversion": "npm test",
     "postversion": "git push && git push --tags && npm publish"
@@ -17,14 +20,21 @@
   "author": "Arpinum",
   "license": "MIT",
   "repository": "arpinum-oss/js-config.git",
-  "keywords": ["configuration", "12 factor", "env", "variable", "Arpinum"],
+  "keywords": [
+    "configuration",
+    "12 factor",
+    "env",
+    "variable",
+    "Arpinum"
+  ],
   "devDependencies": {
     "@types/jest": "21.1.8",
-    "@types/node": "8.0.58",
+    "@types/node": "8.5.1",
     "jest": "21.2.1",
-    "prettier": "1.8.2",
+    "npm-run-all": "4.1.2",
+    "prettier": "1.9.2",
     "ts-jest": "21.2.4",
-    "ts-node": "4.0.1",
+    "ts-node": "4.0.2",
     "tslint": "5.8.0",
     "tslint-config-prettier": "1.6.0",
     "typescript": "2.6.2"
@@ -35,6 +45,10 @@
     },
     "mapCoverage": true,
     "testRegex": "/lib/.*\\.spec\\.ts$",
-    "moduleFileExtensions": ["js", "json", "ts"]
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ]
   }
 }

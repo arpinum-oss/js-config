@@ -4,8 +4,13 @@
     "target": "es2015",
     "module": "commonjs",
     "declaration": true,
+    "alwaysStrict": true,
     "noEmitOnError": true,
     "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "types": ["node", "jest"]
   },
   "include": ["./lib/**/*"],

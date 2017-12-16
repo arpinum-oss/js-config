@@ -1,6 +1,6 @@
 'use strict';
 
-const { loadConfiguration } = require('../build');
+const loadConfiguration = require('../build');
 
 const configuration = loadConfiguration({
   databaseUrl: {
