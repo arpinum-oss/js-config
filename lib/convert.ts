@@ -1,6 +1,10 @@
-import { ValueType } from './schema';
+import { Converter, ValueType } from './schema';
 
-const converters: any = {
+interface Converters {
+  [key: string]: Converter | undefined;
+}
+
+const converters: Converters = {
   string: convertToString,
   boolean: convertToBoolean,
   integer: convertToInteger,
