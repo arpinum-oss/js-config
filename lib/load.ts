@@ -1,8 +1,16 @@
 import { convert } from './convert';
 import { Schema, Value } from './schema';
 
+export interface ProcessEnv {
+  [key: string]: string | undefined;
+}
+
+declare var process: {
+  env: ProcessEnv;
+};
+
 export interface Options {
-  env?: NodeJS.ProcessEnv;
+  env?: ProcessEnv;
 }
 
 export function load(schema: Schema, options: Options): any {
