@@ -9,13 +9,15 @@ It helps you implement a [12-factor configuration].
 
 ## Installation
 
-    npm install @arpinum/config --save
+```
+npm install @arpinum/config --save
+```
 
 ## Usage
 
 Given those env variables:
 
-```bash
+```
 export DATABASE_URL=mongodb://localhost:27017/database
 export LOG_LEVEL=info
 ```
@@ -39,7 +41,7 @@ console.log(configuration);
 
 The output is:
 
-```bash
+```
 {
   databaseUrl: 'mongodb://localhost:27017/database',
   logLevel: 'info'
@@ -70,8 +72,8 @@ The output is:
 ```
 {
   database: {
-    url: '...',
-    user: '...'
+    url: the_url,
+    user: the_user
   }
 }
 ```
