@@ -99,7 +99,7 @@ Example:
 
 ```javascript
 const configuration = config({
-  logLevel: {
+  port: {
     env: ['PORT', 'DB_PORT', 'PG_PORT']
   }
 });
