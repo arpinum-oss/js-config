@@ -7,7 +7,7 @@ export type Converter = (value: string) => any;
 export interface Value {
   type?: ValueType;
   default?: any;
-  env: string;
+  env: string | string[];
   required?: boolean;
   convert?: Converter;
 }

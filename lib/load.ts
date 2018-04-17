@@ -30,8 +30,10 @@ export function load(schema: Schema, options: Options): any {
       return { [key]: load(schemaPart as Schema, options) };
     }
     const schemaValue = schemaPart as Value;
-    const variableName = schemaValue.env;
-    const envValue = opts.env()[variableName];
+    const variableNames = Array.isArray(schemaValue.env)
+      ? schemaValue.env
+      : [schemaValue.env];
+    const envValue = loadEnvValue(variableNames);
     if (envValue !== undefined) {
       return { [key]: callConvert(envValue, schemaValue) };
     }
@@ -39,9 +41,24 @@ export function load(schema: Schema, options: Options): any {
       return { [key]: schemaValue.default };
     }
     if (schemaValue.required) {
-      throw new Error(`${variableName} variable is required but missing`);
+      throw new Error(formatRequiredError(variableNames));
     }
     return {};
+  }
+
+  function loadEnvValue(variableNames: string[]) {
+    const values = variableNames
+      .map(n => opts.env()[n])
+      .filter(v => v !== undefined);
+    return values.length > 0 ? values[0] : undefined;
+  }
+
+  function formatRequiredError(variableNames: string[]): string {
+    if (variableNames.length > 1) {
+      const variables = variableNames.join(', ');
+      return `At least one variable should be defined in: ${variables}`;
+    }
+    return `${variableNames[0]} variable is required but missing`;
   }
 
   function callConvert(envValue: string, schemaValue: Value) {

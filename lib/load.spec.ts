@@ -112,4 +112,47 @@ describe('load function', () => {
 
     expect(configuration.withLog).toEqual('value is converted');
   });
+
+  describe('when fallback variables are provided for a key', () => {
+    it('should set value from another variable when first one is missing', () => {
+      const schema = {
+        port: {
+          env: ['PORT', 'API_PORT']
+        }
+      };
+      env.API_PORT = '8080';
+
+      const configuration = load(schema, options);
+
+      expect(configuration).toEqual({ port: '8080' });
+    });
+
+    it('should set value from first variable when present', () => {
+      const schema = {
+        port: {
+          env: ['PORT', 'API_PORT']
+        }
+      };
+      env.PORT = '8080';
+
+      const configuration = load(schema, options);
+
+      expect(configuration).toEqual({ port: '8080' });
+    });
+
+    it('should fail if all variables are missing though key is required', () => {
+      const schema = {
+        logLevel: {
+          env: ['PORT', 'API_PORT'],
+          required: true
+        }
+      };
+
+      const loadCall = () => load(schema, options);
+
+      expect(loadCall).toThrow(
+        'At least one variable should be defined in: PORT, API_PORT'
+      );
+    });
+  });
 });

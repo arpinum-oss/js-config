@@ -91,6 +91,22 @@ const configuration = config({
 });
 ```
 
+## Fallback variables
+
+More than one variable can be provided for a key. The first defined value will be used.
+
+Example:
+
+```javascript
+const configuration = config({
+  logLevel: {
+    env: ['PORT', 'DB_PORT', 'PG_PORT']
+  }
+});
+```
+
+This is usefull when variables change between deployment environments.
+
 ## Required value
 
 If a property is marked as required, the module will throw an error if the corresponding variable is missing.
