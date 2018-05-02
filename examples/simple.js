@@ -1,8 +1,8 @@
 'use strict';
 
-const { loadConfiguration } = require('../build');
+const config = require('../build');
 
-const configuration = loadConfiguration({
+const configuration = config({
   databaseUrl: {
     env: 'DATABASE_URL'
   },

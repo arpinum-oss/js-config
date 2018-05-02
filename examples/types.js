@@ -1,8 +1,8 @@
 'use strict';
 
-const { loadConfiguration } = require('../build');
+const config = require('../build');
 
-const configuration = loadConfiguration({
+const configuration = config({
   port: {
     env: 'PORT',
     type: 'integer'
