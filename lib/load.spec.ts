@@ -1,9 +1,9 @@
-import { load } from './load';
+import { load, LoadOptions, ProcessEnv } from './load';
 import { ValueType } from './schema';
 
 describe('load function', () => {
-  let options;
-  let env;
+  let options: LoadOptions;
+  let env: ProcessEnv;
 
   beforeEach(() => {
     env = {};
@@ -103,7 +103,7 @@ describe('load function', () => {
     const schema = {
       withLog: {
         env: 'WITH_LOG',
-        convert: v => `${v} is converted`
+        convert: (v: string) => `${v} is converted`
       }
     };
     env.WITH_LOG = 'value';

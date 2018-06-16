@@ -139,15 +139,15 @@ const configuration = config({
 
 Available types:
 
-* string (default),
-* integer,
-* boolean,
-* float
+- string (default),
+- integer,
+- boolean,
+- float
 
 Boolean representations (case insensitive):
 
-* true: true, yes
-* false: false, no
+- true: true, yes
+- false: false, no
 
 ## Custom type conversion
 

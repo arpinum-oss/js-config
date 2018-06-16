@@ -9,11 +9,11 @@ declare var process: {
   env: ProcessEnv;
 };
 
-export interface Options {
-  env?: ProcessEnv;
+export interface LoadOptions {
+  env?: () => ProcessEnv;
 }
 
-export function load(schema: Schema, options?: Options): any {
+export function load(schema: Schema, options?: LoadOptions): any {
   const opts = initializeOptions();
   return Object.keys(schema).reduce(
     (result, key) => Object.assign({}, result, loadKey(key)),
