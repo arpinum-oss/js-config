@@ -10,8 +10,15 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "lib": ["es2017"]
+    "lib": [
+      "es2017"
+    ]
   },
-  "include": ["./lib/**/*"],
-  "exclude": ["node_modules"]
+  "include": [
+    "./lib/**/*",
+    "./examples/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

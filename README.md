@@ -25,9 +25,9 @@ export LOG_LEVEL=info
 In your app, require the module then read the configuration:
 
 ```javascript
-const config = require('@arpinum/config');
+const { loadConfiguration } = require('@arpinum/config');
 
-const configuration = config({
+const configuration = loadConfiguration({
   databaseUrl: {
     env: 'DATABASE_URL'
   },
@@ -53,7 +53,7 @@ The output is:
 Configuration can be nested:
 
 ```javascript
-const configuration = config({
+const configuration = loadConfiguration({
   database: {
     url: {
       env: 'DATABASE_URL'
@@ -83,7 +83,7 @@ The output is:
 A default value can be used if the variable is missing:
 
 ```javascript
-const configuration = config({
+const configuration = loadConfiguration({
   logLevel: {
     env: 'LOG_LEVEL',
     default: 'info'
@@ -98,7 +98,7 @@ More than one variable can be provided for a key. The first defined value will b
 Example:
 
 ```javascript
-const configuration = config({
+const configuration = loadConfiguration({
   port: {
     env: ['PORT', 'DB_PORT', 'PG_PORT']
   }
@@ -114,7 +114,7 @@ If a property is marked as required, the module will throw an error if the corre
 Example:
 
 ```javascript
-const configuration = config({
+const configuration = loadConfiguration({
   logLevel: {
     env: 'LOG_LEVEL',
     required: true
@@ -129,7 +129,7 @@ A property can be cast to a given type, provided representation is compatible.
 Example:
 
 ```javascript
-const configuration = config({
+const configuration = loadConfiguration({
   retryCount: {
     env: 'RETRY_COUNT',
     type: 'integer'
@@ -156,7 +156,7 @@ A property can be converted using a custom conversion function.
 Example:
 
 ```javascript
-const configuration = config({
+const configuration = loadConfiguration({
   timeoutInMilliseconds: {
     env: 'TIMEOUT_IN_SECONDS',
     convert: v => v * 1000

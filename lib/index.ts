@@ -1,3 +1,3 @@
 import { load } from './load';
 
-export = load;
+export const loadConfiguration = load;

@@ -1,11 +1,11 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "noEmit": false,
-    "types": [
-      "node"
-    ]
+    "noEmit": false
   },
+  "include": [
+    "./lib/**/*"
+  ],
   "exclude": [
     "node_modules",
     "**/*.spec.ts",

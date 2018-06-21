@@ -1,6 +1,4 @@
-'use strict';
-
-const { loadConfiguration } = require('../build');
+import { loadConfiguration } from '../lib';
 
 const configuration = loadConfiguration({
   port: {
