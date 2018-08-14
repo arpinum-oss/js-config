@@ -47,7 +47,7 @@ function convertToBoolean(value: string) {
 }
 
 function convertToInteger(value: string) {
-  const integer = Number.parseInt(value);
+  const integer = Number.parseInt(value, 10);
   if (Number.isNaN(integer)) {
     throw new Error(`${value} is not a valid integer`);
   }
