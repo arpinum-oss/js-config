@@ -91,6 +91,29 @@ const configuration = loadConfiguration({
 });
 ```
 
+This is particularly useful for development environment.
+
+## Overriding defaults
+
+Though default values can be described in schema, it may be useful to override them if you load configuration from another source.
+
+```javascript
+const configuration = loadConfiguration(
+  {
+    log: {
+      level: {
+        env: 'LOG_LEVEL'
+      }
+    }
+  },
+  {
+    defaults: {
+      log: { level: 'debug' }
+    }
+  }
+);
+```
+
 ## Fallback variables
 
 More than one variable can be provided for a key. The first defined value will be used.

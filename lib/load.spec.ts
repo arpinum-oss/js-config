@@ -59,7 +59,7 @@ describe('load function', () => {
     expect(configuration).toEqual({});
   });
 
-  it('should set a default value for a missing variable', () => {
+  it('should set a default value for a missing variable based on schema', () => {
     const schema = {
       logLevel: {
         env: 'LOG_LEVEL',
@@ -70,6 +70,37 @@ describe('load function', () => {
     const configuration = load(schema, options);
 
     expect(configuration).toEqual({ logLevel: 'info' });
+  });
+
+  it('should set a default value for a missing variable based on defaults in options', () => {
+    const schema = {
+      logLevel: {
+        env: 'LOG_LEVEL'
+      }
+    };
+    options.defaults = { logLevel: 'info' };
+
+    const configuration = load(schema, options);
+
+    expect(configuration).toEqual({ logLevel: 'info' });
+  });
+
+  it('should rather use a default in option than in schema', () => {
+    const schema = {
+      port: {
+        env: 'PORT',
+        default: '8080'
+      },
+      logLevel: {
+        env: 'LOG_LEVEL',
+        default: 'info'
+      }
+    };
+    options.defaults = { logLevel: 'debug' };
+
+    const configuration = load(schema, options);
+
+    expect(configuration).toEqual({ port: '8080', logLevel: 'debug' });
   });
 
   it('should fail if a required variable is missing', () => {
@@ -142,7 +173,7 @@ describe('load function', () => {
 
     it('should fail if all variables are missing though key is required', () => {
       const schema = {
-        logLevel: {
+        port: {
           env: ['PORT', 'API_PORT'],
           required: true
         }
