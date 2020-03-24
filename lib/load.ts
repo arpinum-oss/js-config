@@ -1,5 +1,5 @@
-import { convert } from './convert';
-import { Schema, Value } from './schema';
+import { convert } from "./convert";
+import { Schema, Value } from "./schema";
 
 export interface ProcessEnv {
   [key: string]: string | undefined;
@@ -69,14 +69,14 @@ function loadKey(
 
 function loadEnvValue(variableNames: string[], options: EffectiveOptions) {
   const values = variableNames
-    .map(n => options.env()[n])
-    .filter(v => v !== undefined);
+    .map((n) => options.env()[n])
+    .filter((v) => v !== undefined);
   return values.length > 0 ? values[0] : undefined;
 }
 
 function formatRequiredError(variableNames: string[]): string {
   if (variableNames.length > 1) {
-    const variables = variableNames.join(', ');
+    const variables = variableNames.join(", ");
     return `At least one variable should be defined in: ${variables}`;
   }
   return `${variableNames[0]} variable is required but missing`;

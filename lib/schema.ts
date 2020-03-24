@@ -12,4 +12,4 @@ export interface Value {
   convert?: Converter;
 }
 
-export type ValueType = 'string' | 'integer' | 'boolean' | 'float';
+export type ValueType = "string" | "integer" | "boolean" | "float";

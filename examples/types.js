@@ -1,20 +1,20 @@
-'use strict';
+"use strict";
 
-const { loadConfiguration } = require('../build');
+const { loadConfiguration } = require("../build");
 
 const configuration = loadConfiguration({
   port: {
-    env: 'PORT',
-    type: 'integer'
+    env: "PORT",
+    type: "integer",
   },
   pi: {
-    env: 'PI',
-    type: 'float'
+    env: "PI",
+    type: "float",
   },
   answer: {
-    env: 'ANSWER',
-    type: 'boolean'
-  }
+    env: "ANSWER",
+    type: "boolean",
+  },
 });
 
 console.log(configuration);

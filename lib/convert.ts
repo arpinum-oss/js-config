@@ -1,4 +1,4 @@
-import { Converter, ValueType } from './schema';
+import { Converter, ValueType } from "./schema";
 
 interface Converters {
   [key: string]: Converter | undefined;
@@ -8,7 +8,7 @@ const converters: Converters = {
   string: convertToString,
   boolean: convertToBoolean,
   integer: convertToInteger,
-  float: convertTofloat
+  float: convertTofloat,
 };
 
 interface Booleans {
@@ -19,10 +19,10 @@ const booleans: Booleans = {
   true: true,
   yes: true,
   false: false,
-  no: false
+  no: false,
 };
 
-export function convert(value: string, type: ValueType = 'string') {
+export function convert(value: string, type: ValueType = "string") {
   return converterFor(type)(value);
 }
 

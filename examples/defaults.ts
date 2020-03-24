@@ -1,17 +1,17 @@
-import { loadConfiguration } from '../lib';
+import { loadConfiguration } from "../lib";
 
 const configuration = loadConfiguration(
   {
     log: {
       level: {
-        env: 'LOG_LEVEL'
-      }
-    }
+        env: "LOG_LEVEL",
+      },
+    },
   },
   {
     defaults: {
-      log: { level: 'debug' }
-    }
+      log: { level: "debug" },
+    },
   }
 );
 

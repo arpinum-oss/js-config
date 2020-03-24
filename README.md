@@ -25,15 +25,15 @@ export LOG_LEVEL=info
 In your app, require the module then read the configuration:
 
 ```javascript
-const { loadConfiguration } = require('@arpinum/config');
+const { loadConfiguration } = require("@arpinum/config");
 
 const configuration = loadConfiguration({
   databaseUrl: {
-    env: 'DATABASE_URL'
+    env: "DATABASE_URL",
   },
   logLevel: {
-    env: 'LOG_LEVEL'
-  }
+    env: "LOG_LEVEL",
+  },
 });
 
 console.log(configuration);
@@ -56,12 +56,12 @@ Configuration can be nested:
 const configuration = loadConfiguration({
   database: {
     url: {
-      env: 'DATABASE_URL'
+      env: "DATABASE_URL",
     },
     user: {
-      env: 'DATABASE_USER'
-    }
-  }
+      env: "DATABASE_USER",
+    },
+  },
 });
 
 console.log(configuration);
@@ -85,9 +85,9 @@ A default value can be used if the variable is missing:
 ```javascript
 const configuration = loadConfiguration({
   logLevel: {
-    env: 'LOG_LEVEL',
-    default: 'info'
-  }
+    env: "LOG_LEVEL",
+    default: "info",
+  },
 });
 ```
 
@@ -102,14 +102,14 @@ const configuration = loadConfiguration(
   {
     log: {
       level: {
-        env: 'LOG_LEVEL'
-      }
-    }
+        env: "LOG_LEVEL",
+      },
+    },
   },
   {
     defaults: {
-      log: { level: 'debug' }
-    }
+      log: { level: "debug" },
+    },
   }
 );
 ```
@@ -123,8 +123,8 @@ Example:
 ```javascript
 const configuration = loadConfiguration({
   port: {
-    env: ['PORT', 'DB_PORT', 'PG_PORT']
-  }
+    env: ["PORT", "DB_PORT", "PG_PORT"],
+  },
 });
 ```
 
@@ -139,9 +139,9 @@ Example:
 ```javascript
 const configuration = loadConfiguration({
   logLevel: {
-    env: 'LOG_LEVEL',
-    required: true
-  }
+    env: "LOG_LEVEL",
+    required: true,
+  },
 });
 ```
 
@@ -154,9 +154,9 @@ Example:
 ```javascript
 const configuration = loadConfiguration({
   retryCount: {
-    env: 'RETRY_COUNT',
-    type: 'integer'
-  }
+    env: "RETRY_COUNT",
+    type: "integer",
+  },
 });
 ```
 
@@ -181,9 +181,9 @@ Example:
 ```javascript
 const configuration = loadConfiguration({
   timeoutInMilliseconds: {
-    env: 'TIMEOUT_IN_SECONDS',
-    convert: v => v * 1000
-  }
+    env: "TIMEOUT_IN_SECONDS",
+    convert: (v) => v * 1000,
+  },
 });
 ```
 

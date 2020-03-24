@@ -1,19 +1,19 @@
-'use strict';
+"use strict";
 
-const { loadConfiguration } = require('../build');
+const { loadConfiguration } = require("../build");
 
 const configuration = loadConfiguration({
   log: {
     level: {
-      env: 'LOG_LEVEL',
-      default: 'info'
+      env: "LOG_LEVEL",
+      default: "info",
     },
     withColors: {
-      env: 'LOG_COLORS',
-      type: 'boolean',
-      default: true
-    }
-  }
+      env: "LOG_COLORS",
+      type: "boolean",
+      default: true,
+    },
+  },
 });
 
 console.log(configuration);

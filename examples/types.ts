@@ -1,18 +1,18 @@
-import { loadConfiguration } from '../lib';
+import { loadConfiguration } from "../lib";
 
 const configuration = loadConfiguration({
   port: {
-    env: 'PORT',
-    type: 'integer'
+    env: "PORT",
+    type: "integer",
   },
   pi: {
-    env: 'PI',
-    type: 'float'
+    env: "PI",
+    type: "float",
   },
   answer: {
-    env: 'ANSWER',
-    type: 'boolean'
-  }
+    env: "ANSWER",
+    type: "boolean",
+  },
 });
 
 console.log(configuration);

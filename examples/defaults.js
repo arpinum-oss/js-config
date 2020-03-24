@@ -1,19 +1,19 @@
-'use strict';
+"use strict";
 
-const { loadConfiguration } = require('../build');
+const { loadConfiguration } = require("../build");
 
 const configuration = loadConfiguration(
   {
     log: {
       level: {
-        env: 'LOG_LEVEL'
-      }
-    }
+        env: "LOG_LEVEL",
+      },
+    },
   },
   {
     defaults: {
-      log: { level: 'debug' }
-    }
+      log: { level: "debug" },
+    },
   }
 );
 

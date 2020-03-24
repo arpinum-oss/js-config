@@ -1,15 +1,15 @@
-'use strict';
+"use strict";
 
-const { loadConfiguration } = require('../build');
+const { loadConfiguration } = require("../build");
 
 const configuration = loadConfiguration({
   databaseUrl: {
-    env: 'DATABASE_URL'
+    env: "DATABASE_URL",
   },
   logLevel: {
-    env: 'LOG_LEVEL',
-    default: 'info'
-  }
+    env: "LOG_LEVEL",
+    default: "info",
+  },
 });
 
 console.log(configuration);
