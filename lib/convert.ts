@@ -22,7 +22,7 @@ const booleans: Booleans = {
   no: false,
 };
 
-export function convert(value: string, type: ValueType = "string") {
+export function convert(value: string, type: ValueType = "string"): any {
   return converterFor(type)(value);
 }
 

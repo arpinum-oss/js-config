@@ -5,7 +5,7 @@ export interface ProcessEnv {
   [key: string]: string | undefined;
 }
 
-declare var process: {
+declare let process: {
   env: ProcessEnv;
 };
 
@@ -41,7 +41,7 @@ function loadKey(
   schema: Schema,
   defaults: any,
   options: EffectiveOptions
-): object {
+): any {
   const schemaPart = schema[key];
   if (schemaSeemsNested(schemaPart)) {
     const nestedDefault = defaults !== undefined ? defaults[key] : undefined;
