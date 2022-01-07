@@ -1,6 +1,6 @@
 {
   "name": "@arpinum/config",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "Simple module to read configuration from env variables",
   "main": "build/index.js",
   "types": "build/index.d.ts",
