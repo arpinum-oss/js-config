@@ -1,4 +1,4 @@
-# @arpinum/config [![Build Status](https://travis-ci.org/arpinum-oss/js-config.svg?branch=master)](https://travis-ci.org/arpinum-oss/js-config)
+# @arpinum/config [![Build Status](https://github.com/arpinum-oss/js-config/workflows/CI/badge.svg)](https://github.com/arpinum-oss/js-config/actions?query=workflow%3ACI)
 
 > One man's constant is another man's variable.  
 > <cite>(Alan Perlis)</cite>
