@@ -110,7 +110,7 @@ const configuration = loadConfiguration(
     defaults: {
       log: { level: "debug" },
     },
-  }
+  },
 );
 ```
 

@@ -12,7 +12,7 @@ const configuration = loadConfiguration(
     defaults: {
       log: { level: "debug" },
     },
-  }
+  },
 );
 
 console.log(configuration);

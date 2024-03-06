@@ -182,7 +182,7 @@ describe("load function", () => {
       const loadCall = () => load(schema, options);
 
       expect(loadCall).toThrow(
-        "At least one variable should be defined in: PORT, API_PORT"
+        "At least one variable should be defined in: PORT, API_PORT",
       );
     });
   });

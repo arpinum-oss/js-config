@@ -28,7 +28,7 @@ function doLoad(schema: Schema, defaults: any, options: EffectiveOptions): any {
   return Object.keys(schema).reduce(
     (result, key) =>
       Object.assign({}, result, loadKey(key, schema, defaults, options)),
-    {}
+    {},
   );
 }
 
@@ -40,7 +40,7 @@ function loadKey(
   key: string,
   schema: Schema,
   defaults: any,
-  options: EffectiveOptions
+  options: EffectiveOptions,
 ): any {
   const schemaPart = schema[key];
   if (schemaSeemsNested(schemaPart)) {
