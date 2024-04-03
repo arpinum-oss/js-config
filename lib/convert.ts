@@ -1,8 +1,6 @@
 import { Converter, ValueType } from "./schema";
 
-interface Converters {
-  [key: string]: Converter | undefined;
-}
+type Converters = Record<string, Converter | undefined>;
 
 const converters: Converters = {
   string: convertToString,
@@ -11,9 +9,7 @@ const converters: Converters = {
   float: convertTofloat,
 };
 
-interface Booleans {
-  [key: string]: boolean | undefined;
-}
+type Booleans = Record<string, boolean | undefined>;
 
 const booleans: Booleans = {
   true: true,
